@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+import base64
 
 load_dotenv()
 
@@ -37,6 +38,6 @@ async def chat_endpoint(audio_file: UploadFile = File(...)):
             audio_content=audio_content,
         )
 
-        return ChatResponse(audio_content=response_audio.decode("latin-1"))
+        return ChatResponse(audio_content=base64.b64encode(response_audio).decode("utf-8"))
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e)) 
