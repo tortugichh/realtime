@@ -13,7 +13,8 @@ import chat
 app = FastAPI()
 
 origins = [
-    "https://realtime-front.vercel.app/",  # Your frontend's origin
+    "http://localhost:5173",  # Your local frontend's origin
+    "https://realtime-front.vercel.app", # Your deployed frontend's origin
 ]
 
 app.add_middleware(
